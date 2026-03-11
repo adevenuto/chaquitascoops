@@ -184,7 +184,7 @@ ul { list-style: none; }
   .nav-links.open { transform: translateY(0); }
   .nav-links a { font-size: 1.1rem; }
   .nav-toggle { display: block; }
-  .mex-banner { height: 28px; }
+  .mex-banner { height: 36px; }
 }
 
 /* –– Mex Banner –– */
@@ -194,7 +194,7 @@ ul { list-style: none; }
   overflow: hidden;
   pointer-events: none;
   z-index: 99;
-  height: 40px;
+  height: 52px;
 }
 .mex-flag {
   height: 100%;
@@ -429,6 +429,13 @@ section.wavy-bg {
   color: var(--text-mid);
 }
 .cone-chip strong { color: var(--magenta); }
+.cone-chip-img {
+  display: inline-block;
+  height: 28px;
+  width: auto;
+  vertical-align: middle;
+  margin-left: 4px;
+}
 .toppings-heading {
   font-family: var(--font-heading);
   font-size: 1.4rem;

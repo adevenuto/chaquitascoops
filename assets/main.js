@@ -20,7 +20,7 @@ links.querySelectorAll('a').forEach(a => {
 
   function buildBanner() {
     const bannerWidth = banner.offsetWidth;
-    const gap = 8;
+    const gap = 4;
 
     // Create a temp flag to measure rendered width
     const temp = document.createElement('img');
@@ -36,7 +36,7 @@ links.querySelectorAll('a').forEach(a => {
 
       // Calculate how many flags fit
       let count = Math.floor((bannerWidth + gap) / (flagWidth + gap));
-      count = Math.max(count, 4);
+      count = Math.max(count - 2, 4);
 
       // Clear and rebuild
       banner.innerHTML = '';
