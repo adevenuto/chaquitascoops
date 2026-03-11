@@ -575,18 +575,14 @@ section.wavy-bg {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  color: var(--white);
-  text-align: center;
+  background: #fff1f2;
   padding: 16px;
 }
-.specialty-card:nth-child(1) .specialty-img { background: linear-gradient(135deg, var(--papel-yellow), var(--papel-orange)); }
-.specialty-card:nth-child(2) .specialty-img { background: linear-gradient(135deg, var(--coral), var(--rose-500)); }
-.specialty-card:nth-child(3) .specialty-img { background: linear-gradient(135deg, var(--papel-teal), #4db6ac); }
-.specialty-card:nth-child(4) .specialty-img { background: linear-gradient(135deg, var(--papel-purple), #9575cd); }
-.specialty-card:nth-child(5) .specialty-img { background: linear-gradient(135deg, var(--rose-400), var(--magenta)); }
-.specialty-card:nth-child(6) .specialty-img { background: linear-gradient(135deg, var(--papel-green), var(--papel-teal)); }
+.specialty-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
 .specialty-info {
   padding: 20px;
   display: flex;
