@@ -12,6 +12,56 @@ links.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => links.classList.remove('open'));
 });
 
+// Papel picado banner
+(function() {
+  const COLORS = ['red','yellow','orange','green','teal','blue','purple'];
+  const banner = document.querySelector('.mex-banner');
+  if (!banner) return;
+
+  function buildBanner() {
+    const bannerWidth = banner.offsetWidth;
+    const gap = 8;
+
+    // Create a temp flag to measure rendered width
+    const temp = document.createElement('img');
+    temp.src = 'assets/images/banner-red.png';
+    temp.className = 'mex-flag';
+    temp.style.visibility = 'hidden';
+    banner.appendChild(temp);
+
+    function onTempLoad() {
+      temp.onload = null; // prevent double-fire
+      const flagWidth = temp.offsetWidth;
+      banner.removeChild(temp);
+
+      // Calculate how many flags fit
+      let count = Math.floor((bannerWidth + gap) / (flagWidth + gap));
+      count = Math.max(count, 4);
+
+      // Clear and rebuild
+      banner.innerHTML = '';
+      for (let i = 0; i < count; i++) {
+        const img = document.createElement('img');
+        img.src = `assets/images/banner-${COLORS[i % COLORS.length]}.png`;
+        img.alt = '';
+        img.className = 'mex-flag';
+        banner.appendChild(img);
+      }
+    }
+
+    temp.onload = onTempLoad;
+    if (temp.complete) onTempLoad();
+  }
+
+  buildBanner();
+
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(buildBanner, 150);
+  });
+})();
+
 // Intersection Observer for reveal animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

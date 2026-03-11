@@ -184,6 +184,24 @@ ul { list-style: none; }
   .nav-links.open { transform: translateY(0); }
   .nav-links a { font-size: 1.1rem; }
   .nav-toggle { display: block; }
+  .mex-banner { height: 28px; }
+}
+
+/* –– Mex Banner –– */
+.mex-banner {
+  display: flex;
+  justify-content: space-evenly;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 99;
+  height: 40px;
+}
+.mex-flag {
+  height: 100%;
+  width: auto;
+  flex-shrink: 0;
+  position: relative;
+  z-index: -2;
 }
 
 /* ── Hero ── */
