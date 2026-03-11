@@ -115,7 +115,7 @@ ul { list-style: none; }
 .nav {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 200;
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -130,6 +130,7 @@ ul { list-style: none; }
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  background: #fff;
 }
 .nav-logo {
   font-family: var(--font-heading);
@@ -165,7 +166,8 @@ ul { list-style: none; }
     flex-direction: column;
     padding: 24px;
     gap: 20px;
-    transform: translateY(-120%);
+    z-index: -1;
+    transform: translateY(-100%);
     transition: transform 0.3s ease;
     border-bottom: 1px solid rgba(0,0,0,0.06);
   }
@@ -275,6 +277,9 @@ ul { list-style: none; }
 @media (max-width: 768px) {
   .hero { padding: 60px 0 48px; }
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-text { text-align: center; }
+  .hero-contact { align-items: center; }
+  .hero-cta { align-self: center; }
 }
 
 /* ── Our Story ── */
