@@ -116,7 +116,6 @@ ul { list-style: none; }
   position: sticky;
   top: 0;
   z-index: 200;
-  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   height: var(--nav-height);
