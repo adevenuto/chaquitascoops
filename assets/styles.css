@@ -120,6 +120,7 @@ ul { list-style: none; }
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   height: var(--nav-height);
+  background: #fff;
 }
 .nav-inner {
   max-width: var(--max-width);
