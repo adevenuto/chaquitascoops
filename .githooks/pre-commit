@@ -1,0 +1,11 @@
+#!/bin/sh
+# Auto-update cache-busting timestamps on CSS/JS assets in index.html
+
+TIMESTAMP=$(date +%s)
+
+# Replace ?v=<anything> with ?v=<current timestamp> on asset lines
+sed -i '' "s/styles\.css?v=[0-9]*/styles.css?v=$TIMESTAMP/" index.html
+sed -i '' "s/main\.js?v=[0-9]*/main.js?v=$TIMESTAMP/" index.html
+
+# Re-stage index.html so the updated timestamps are included in the commit
+git add index.html
