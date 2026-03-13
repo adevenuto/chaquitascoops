@@ -1,6 +1,21 @@
 // Initialize Lucide icons
 lucide.createIcons();
 
+// Scroll offset for sticky nav + banner
+const SCROLL_OFFSET = 90;
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const id = link.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    window.scrollTo({
+      top: target.offsetTop - SCROLL_OFFSET,
+      behavior: 'smooth'
+    });
+  });
+});
+
 // Mobile nav toggle
 const toggle = document.getElementById('navToggle');
 const links = document.getElementById('navLinks');
