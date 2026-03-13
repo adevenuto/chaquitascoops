@@ -37,7 +37,7 @@
 
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--font-body);
   color: var(--text-dark);
@@ -159,6 +159,12 @@ ul { list-style: none; }
   letter-spacing: 0.3px;
 }
 .nav-links a:hover { color: var(--magenta); }
+.nav-links .nav-mobile-only { display: none; }
+@media (max-width: 768px) {
+  .nav-links .nav-mobile-only { display: inline-flex; }
+  .nav-links a.hero-cta-secondary { color: var(--magenta); }
+  .nav-links a.hero-cta-secondary:hover { color: var(--white); }
+}
 .nav-toggle {
   display: none;
   background: none;
@@ -795,6 +801,7 @@ a.community-contact-item:hover {
   font-size: 0.95rem;
   color: var(--white);
   transition: border-color 0.2s, background 0.2s;
+  width: 100%;
 }
 .form-group input::placeholder,
 .form-group textarea::placeholder {
@@ -829,7 +836,7 @@ a.community-contact-item:hover {
   box-shadow: var(--shadow-lg);
 }
 @media (max-width: 768px) {
-  .catering-form-row-2col { grid-template-columns: 1fr; }
+  .catering-form-row-2col:not(.catering-form-row-keep2col) { grid-template-columns: 1fr; }
 }
 
 /* ── Thank You ── */
