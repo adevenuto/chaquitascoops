@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="assets/styles.css?v=1773291341">
+  <link rel="stylesheet" href="assets/styles.css?v=1773413496">
 </head>
 <body>
 
@@ -50,10 +50,16 @@
         <div class="hero-text reveal">
           <h1>Chiquita Scoops</h1>
           <p class="tagline">Family-owned Mexican-style ice cream shop bringing sweet dreams to Chicago's Gladstone Park neighborhood. Paletas, scoops, specialty treats and so much more.</p>
-          <a href="#menu-scoops" class="hero-cta">
-            <i data-lucide="ice-cream-cone" style="width:20px;height:20px"></i>
-            View Our Menu
-          </a>
+          <div class="hero-ctas">
+            <a href="#menu-scoops" class="hero-cta">
+              <i data-lucide="ice-cream-cone" style="width:20px;height:20px"></i>
+              View Our Menu
+            </a>
+            <a href="#catering-form" class="hero-cta hero-cta-secondary">
+              <i data-lucide="utensils" style="width:20px;height:20px"></i>
+              Book Catering
+            </a>
+          </div>
         </div>
         <div class="hero-right reveal reveal-delay-2">
           <img src="assets/images/chaquita-logo.png" alt="Chiquita Scoops Logo" class="hero-logo">
@@ -346,6 +352,74 @@
     </div>
   </section>
 
+  <!-- ── Catering Form ── -->
+  <section class="catering-section section-pad" id="catering-form">
+    <div class="container">
+      <h2 class="section-title reveal">Book Catering</h2>
+      <div class="decorative-divider reveal"></div>
+      <div class="section-subtitle reveal">Let us bring the sweetness to your next event</div>
+
+      <form 
+        class="catering-form reveal" 
+        name="catering" 
+        method="POST" 
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/thank-you.html"
+      >
+
+        <input type="hidden" name="form-name" value="catering">
+
+        <!-- spam protection -->
+        <p style="display:none">
+          <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+        </p>
+
+        <div class="catering-form-row">
+          <div class="form-group">
+            <label for="catering-name">Name</label>
+            <input type="text" id="catering-name" name="Name" required placeholder="Your full name">
+          </div>
+        </div>
+
+        <div class="catering-form-row catering-form-row-2col">
+          <div class="form-group">
+            <label for="catering-email">Email</label>
+            <input type="email" id="catering-email" name="Email" required placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="catering-phone">Phone</label>
+            <input type="tel" id="catering-phone" name="Phone" placeholder="(123) 456-7890">
+          </div>
+        </div>
+
+        <div class="catering-form-row catering-form-row-2col">
+          <div class="form-group">
+            <label for="catering-date">Event Date</label>
+            <input type="date" id="catering-date" name="Event Date" required>
+          </div>
+          <div class="form-group">
+            <label for="catering-guests">Estimated Guests</label>
+            <input type="number" id="catering-guests" name="Estimated Guests" min="1" placeholder="50">
+          </div>
+        </div>
+
+        <div class="catering-form-row">
+          <div class="form-group">
+            <label for="catering-message">Message</label>
+            <textarea id="catering-message" name="Message" rows="4" placeholder="Tell us about your event..."></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="catering-submit">
+          <i data-lucide="send" style="width:18px;height:18px"></i>
+          Send Inquiry
+        </button>
+
+      </form>
+    </div>
+  </section>
+
   <!-- ── Community & Social ── -->
   <section class="community section-pad" id="community">
     <div class="container">
@@ -413,6 +487,6 @@
   </footer>
 
   <!-- ── Scripts ── -->
-  <script src="assets/main.js?v=1773291341"></script>
+  <script src="assets/main.js?v=1773413496"></script>
 </body>
 </html>
