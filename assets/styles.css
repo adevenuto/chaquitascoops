@@ -805,6 +805,11 @@ a.community-contact-item:hover {
   width: 100%;
   min-width: 0;
 }
+.form-group input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 46px;
+}
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: rgba(255,255,255,0.35);
