@@ -87,3 +87,85 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Paleta tooltip
+(function() {
+  const tooltip = document.getElementById('paletaTooltip');
+  if (!tooltip) return;
+
+  const nameEl = tooltip.querySelector('.paleta-tooltip-name');
+  const descEl = tooltip.querySelector('.paleta-tooltip-desc');
+  const tags = document.querySelectorAll('.paleta-tag[data-desc]');
+  let activeTag = null;
+  let hideTimer = null;
+
+  function show(tag) {
+    clearTimeout(hideTimer);
+    activeTag = tag;
+    nameEl.textContent = tag.textContent;
+    descEl.textContent = tag.dataset.desc;
+    tooltip.classList.add('visible');
+    position(tag);
+  }
+
+  function hide() {
+    hideTimer = setTimeout(function() {
+      tooltip.classList.remove('visible');
+      activeTag = null;
+    }, 120);
+  }
+
+  function position(tag) {
+    const r = tag.getBoundingClientRect();
+    const tw = tooltip.offsetWidth;
+    const th = tooltip.offsetHeight;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const gap = 10;
+
+    // Horizontal: center on pill, clamp to viewport
+    var left = r.left + r.width / 2 - tw / 2;
+    left = Math.max(gap, Math.min(left, vw - tw - gap));
+
+    // Vertical: prefer below, flip above if no room
+    var top;
+    if (r.bottom + gap + th <= vh) {
+      top = r.bottom + gap;
+    } else {
+      top = r.top - gap - th;
+    }
+    // Clamp vertical too
+    top = Math.max(gap, Math.min(top, vh - th - gap));
+
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = top + 'px';
+  }
+
+  // Desktop: hover
+  tags.forEach(function(tag) {
+    tag.addEventListener('mouseenter', function() { show(tag); });
+    tag.addEventListener('mouseleave', hide);
+  });
+
+  // Mobile: touch
+  tags.forEach(function(tag) {
+    tag.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      if (activeTag === tag) {
+        hide();
+      } else {
+        show(tag);
+      }
+    }, { passive: false });
+  });
+
+  // Dismiss on scroll or touch outside
+  document.addEventListener('touchstart', function(e) {
+    if (activeTag && !e.target.closest('.paleta-tag')) {
+      hide();
+    }
+  });
+  window.addEventListener('scroll', function() {
+    if (activeTag) hide();
+  }, { passive: true });
+})();
