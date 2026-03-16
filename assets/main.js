@@ -95,6 +95,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   const nameEl = tooltip.querySelector('.paleta-tooltip-name');
   const descEl = tooltip.querySelector('.paleta-tooltip-desc');
+  const imgEl = tooltip.querySelector('.paleta-tooltip-img');
   const tags = document.querySelectorAll('.paleta-tag[data-desc]');
   let activeTag = null;
   let hideTimer = null;
@@ -104,6 +105,13 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     activeTag = tag;
     nameEl.textContent = tag.textContent;
     descEl.textContent = tag.dataset.desc;
+    if (tag.dataset.img) {
+      imgEl.style.backgroundImage = 'url(' + tag.dataset.img + ')';
+      imgEl.style.display = '';
+    } else {
+      imgEl.style.backgroundImage = '';
+      imgEl.style.display = 'none';
+    }
     tooltip.classList.add('visible');
     position(tag);
   }
