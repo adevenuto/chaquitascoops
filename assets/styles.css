@@ -708,6 +708,7 @@ section.wavy-bg {
 }
 @media (max-width: 768px) {
   .specialty-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+  .specialty-card:last-child { grid-column: auto; max-width: none; justify-self: auto; }
 }
 
 /* ── Snacks ── */
