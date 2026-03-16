@@ -66,12 +66,16 @@ links.querySelectorAll('a').forEach(a => {
 
     temp.onload = onTempLoad;
     if (temp.complete) onTempLoad();
+    lastWidth = banner.offsetWidth;
   }
 
+  let lastWidth = banner.offsetWidth;
   buildBanner();
-
   let resizeTimer;
   window.addEventListener('resize', function() {
+    const w = banner.offsetWidth;
+    if (w === lastWidth) return;
+    lastWidth = w;
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(buildBanner, 150);
   });
