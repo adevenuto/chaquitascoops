@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chiquitascoops.com/sitemap.xml
